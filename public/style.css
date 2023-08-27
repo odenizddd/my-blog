@@ -38,6 +38,10 @@ body {
     margin-bottom: 20px;
 }
 
+.post:focus-within {
+    outline: 1px solid black;
+}
+
 .post-content-container:focus {
     outline: none;
 }
