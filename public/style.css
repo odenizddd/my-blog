@@ -38,9 +38,9 @@ body {
     margin-bottom: 20px;
 }
 
-.post:focus {
-    outline: 1px solid black;
-} 
+.post-content-container:focus {
+    outline: none;
+}
 
 .post button {
     background-color: var(--secondary-bg-color);

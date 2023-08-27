@@ -6,9 +6,11 @@ const baseUrl = location.href + "posts";
 const appendPost = (postObj) => {
     const post = document.createElement("div");
     post.classList.add("post");
+    const postContentContainer = document.createElement("div");
+    postContentContainer.classList.add("post-content-container");
     const postContent = document.createTextNode(postObj.content);
-    post.appendChild(postContent);
-    post.appendChild(document.createElement("br"));
+    postContentContainer.appendChild(postContent);
+    post.appendChild(postContentContainer);
     const deleteButton = document.createElement("button");
     deleteButton.addEventListener("click", async () => {
         const response = await fetch(baseUrl + `/${postObj._id}`, {
@@ -27,11 +29,11 @@ const appendPost = (postObj) => {
     const editButton = document.createElement("button");
     editButton.addEventListener("click", async () => {
         if(editButton.innerHTML === "EDIT") {
-            post.setAttribute("contenteditable", "true");
-            post.focus();
+            postContentContainer.setAttribute("contenteditable", "true");
+            postContentContainer.focus();
             editButton.innerHTML = "SAVE"
         } else {
-            post.setAttribute("contenteditable", "false");
+            postContentContainer.setAttribute("contenteditable", "false");
             editButton.innerHTML = "EDIT";
             let response = await fetch(baseUrl + `/${postObj._id}`, {
                 method: "PUT",
